@@ -4,6 +4,7 @@
 import numpy as np
 
 
+
 class MarkovModel:
     """Representation of a Markov model."""
 
@@ -22,7 +23,8 @@ class MarkovModel:
 
         self.init_probs = init_probs
         self.trans = trans
-
+    
+    
 
 def likelihood(x: list[int], mm: MarkovModel) -> float:
     """
@@ -31,4 +33,11 @@ def likelihood(x: list[int], mm: MarkovModel) -> float:
     This is the same as the probability of x given mm,
     i.e., P(x ; mm).
     """
-    ...  # FIXME: implement this
+    for i in range(len(x)):
+        if i == 0:
+            result = mm.init_probs[x[i]] # pi(x1) start probabilities
+        result *= mm.trans[x[i-1]][x[i]] #T[xi-1,xi] transition probabilities
+    return result
+
+
+

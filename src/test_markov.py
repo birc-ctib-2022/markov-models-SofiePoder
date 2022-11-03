@@ -1,6 +1,6 @@
 """Testing Markov models."""
 
+from markov import likelihood
+from markov import MarkovModel
 
-def test_me() -> None:
-    """Test your code."""
-    ...
+def test_markov() -> None
